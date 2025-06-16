@@ -1,4 +1,4 @@
-import { Navbar } from "@/components/custom/Navbar"
+import { LeftSidebar } from "@/components/custom/LeftSidebar"
 import { Outlet, useNavigate } from "react-router-dom"
 import { useEffect } from "react"
 import { whoami } from "@/services/authService"
@@ -6,6 +6,7 @@ import { useAppDispatch } from "@/store/hooks"
 import { setToken, setUser, logout, setLoading } from "@/store/slices/authSlice"
 import { toast } from "sonner"
 import axios, { AxiosError } from "axios"
+import { RightSidebar } from "@/components/custom/RightSidebar"
 
 export const HomeLayout = () => {
   const dispatch = useAppDispatch();
@@ -75,9 +76,12 @@ export const HomeLayout = () => {
   }
 
   return (
-    <div className="min-h-screen w-full flex flex-col justify-start items-center">
-      <Navbar />
+    <div className={`w-full flex justify-start items-center font-sans`}>
+      <LeftSidebar />
+
       <Outlet />
+
+      <RightSidebar />
     </div>
   )
 }
